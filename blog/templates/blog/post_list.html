@@ -5,7 +5,14 @@
     <title>Sungjae's blog</title>
 </head>
 <body>
-    <p>Hi there!</p>
-    <p>It works!</p>
+    <div>
+        <h1><a href="">Sung Jaes Blog</a></h1>
+    </div>
+
+    {% for post in posts %}
+        <p>published: {{ post.published_date }}</p>
+        <h1><a href="">{{ post.title }}</a></h1>
+        <p>{{ post.text|linebreaksbr }}</p>
+    {% endfor %}
 </body>
 </html>
