@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block script %}
+    <script>
+        $(function(){
+            $("body").attr("background", "static/img/space.jpg");
+            tetris.test();
+
+        })
+    </script>
+{% endblock %}
+{% block content %}
+{% endblock %}
+{% block below %}
+    <div class="tetris-board">
+        <div class="tetris-table"></div>
+        <div class="tetris-game-over">GAME OVER</div>
+    </div>
+
+
+
+{% endblock %}
+

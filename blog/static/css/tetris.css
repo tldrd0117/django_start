@@ -1,0 +1,73 @@
+.tetris-block{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0 0 10px #000000;
+    z-index: 1100;
+}
+
+.tetris-white-space{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    box-shadow: inset 0 0 10px #000000;
+    z-index: 1100;
+    background-color: #fff;
+}
+
+.tetris-table{
+    position: relative;
+    z-index: 1090;
+    background-color: rgba(0,0,0,0.8);
+
+}
+
+.tetris-board{
+    left: 100px;
+    top: 100px;
+    position: relative;
+
+}
+
+.tetris-game-over{
+    z-index: 1110;
+    display: none;
+    margin: 0;
+    padding: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border: 5px solid #ffffff;
+}
+
+.tetris-block-color-1{
+    background-color: #DC143C;
+}
+
+.tetris-block-color-2{
+    background-color: #4169E1;
+}
+
+
+.tetris-block-color-3{
+    background-color: #FF7F50;
+}
+
+
+.tetris-block-color-4{
+    background-color: #FFE4B5;
+}
+
+.tetris-block-color-5{
+    background-color: #FF1493;
+}
+
+.tetris-block-color-6{
+    background-color: #AFEEEE;
+}
+
+.tetris-block-color-7{
+    background-color: #98FB98;
+}

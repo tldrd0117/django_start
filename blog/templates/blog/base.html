@@ -7,10 +7,60 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-    <title>Sungjae's blog</title>
+    <link rel="stylesheet" href="{% static 'css/tetris.css' %}">
+
+    {% block css %}
+    {% endblock %}
+    <title>블로그</title>
+    <script src="{% static 'script/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'script/tetris.js' %}"></script>
+    <script>
+        $(function(){
+            var isClick = false;
+            console.log('start');
+            $('.menu-btn').click(function(){
+                console.log('click');
+                if(isClick){
+                    isClick = false;
+                    $('.drawer').animate( { left: '-200px' },300,function(){
+                        $('.drawer').css('display', 'none');
+                    })
+                }
+                else{
+                    isClick = true;
+                    $('.drawer').css('display', 'block');
+                    $('.drawer').animate( { left: '0px' },300,function(){
+
+                    })
+
+                }
+            })
+            $('.drawer-item').click(function(){
+                var index = $(this).index();
+                if(index==0){
+                    window.location='{% url 'home' %}'
+                }
+                else if(index==1){
+                    window.location='{% url 'post_list' %}'
+
+                }
+                else if(index==2){
+                    alert('hello')
+                }
+            });
+
+        });
+    </script>
+    {% block script %}
+    {% endblock %}
 </head>
 <body>
+
     <div class="page-header">
+        <div class="menu-btn">
+            <div class="nav-bar nav-bar-white"></div>
+        </div>
+        <div class="page-header-menu">
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
             <a href="{% url 'post_draft_list' %}" class="top-menu"><span class="glyphicon glyphicon-edit"></span></a>
@@ -18,15 +68,32 @@
         {% else %}
             <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-lock"></span></a>
         {% endif %}
-        <h1><a href="">Sung Jaes Blog</a></h1>
+        </div>
+        <h1><a class="title_name" href="{% url 'post_list' %}">블로그</a></h1>
     </div>
     <div class="content container">
-    <div class="row">
-        <div class="col-md-8">
-            {% block content %}
-            {% endblock %}
+        <div class="row">
+            <div class="col-md-8">
+                {% block content %}
+                {% endblock %}
+            </div>
         </div>
     </div>
-</div>
+    <div class="drawer">
+        <div class="drawer-header">
+            <div class="menu-btn">
+                <div class="nav-bar nav-bar-black"></div>
+            </div>
+            <h3><a class="nav-title-name" href="{% url 'post_list' %}">블로그</a></h3>
+        </div>
+        <div class="drawer-content">
+            <div class="drawer-item"><span>홈으로</span></div>
+            <div class="drawer-item"><span>리스트로</span></div>
+            <div class="drawer-item"><span>무언가어떤그것</span></div>
+        </div>
+
+    </div>
+    {% block below %}
+    {% endblock %}
 </body>
 </html>
