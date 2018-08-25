@@ -85,7 +85,7 @@
 .drawer{
     position: fixed;
     background: #ffffff;
-    z-index: 101;
+    z-index: 1121;
     height: 100%;
     width: 200px;
     top: 0px;
